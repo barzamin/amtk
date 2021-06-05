@@ -1,0 +1,179 @@
+[
+   {
+      "CMSID":"1241245664867",
+      "Name":"Acela",
+      "ZoomLevel":6      
+   },
+   {
+      "CMSID":"1241245664917",
+      "Name":"Adirondack",
+      "ZoomLevel":6
+   },
+   {
+      "CMSID":"1241245667297",
+      "Name":"Amtrak Cascades",
+      "ZoomLevel":6
+   },
+   {
+      "CMSID":"1241245666320",
+      "Name":"Auto Train"
+   },
+   {
+      "CMSID":"1237608341980",
+      "Name":"California Zephyr",
+      "ZoomLevel":4
+   },
+   {
+      "CMSID":"1241245647487",
+      "Name":"Capitol Corridor",
+      "ZoomLevel":7
+   },
+   {
+      "CMSID":"1241245652139",
+      "Name":"Capitol Limited",
+      "ZoomLevel":5
+   },
+   {
+      "CMSID":"1241245652448",
+      "Name":"Cardinal",
+      "OffsetY":"1",
+      "ZoomLevel":5
+   },
+   {
+      "CMSID":"1251628741205",
+      "Name":"Hoosier State",
+      "OffsetY":"1",
+      "ZoomLevel":5
+   },
+   {
+      "CMSID":"1241245666474",
+      "Name":"Carolinian / Piedmont",
+      "ZoomLevel":5
+   },
+   {
+      "CMSID":"1241245653236",
+      "Name":"City of New Orleans",
+      "ZoomLevel":4
+   },
+   {
+      "CMSID":"1241245648567",
+      "Name":"Coast Starlight",
+      "OffsetX":"-4",
+      "ZoomLevel":4
+   },
+   {
+      "CMSID":"1241245668168",
+      "Name":"Crescent",
+      "ZoomLevel":4
+   },
+   {
+      "CMSID":"1241245668499",
+      "Name":"Downeaster",
+      "ZoomLevel":7
+   },
+   {
+      "CMSID":"1241245653623",
+      "Name":"Empire Builder",
+      "ZoomLevel":4
+   },
+   {
+      "CMSID":"1241245666578",
+      "Name":"Empire Service",
+      "OffsetY":"1",
+      "ZoomLevel":6
+   },
+   {
+      "CMSID":"1241245666724",
+      "Name":"Ethan Allen Express",
+      "ZoomLevel":6
+   },
+   {
+      "CMSID":"1241245668272",
+      "Name":"Heartland Flyer",
+      "ZoomLevel":6
+   },
+   {
+      "CMSID":"1241245664205",
+      "Name":"Hiawatha",
+      "OffsetX":"-1",
+      "ZoomLevel":7
+   },
+   {
+      "CMSID":"1241245664293",
+      "Name":"Illinois Service",
+      "ZoomLevel":6
+   },
+   {
+      "CMSID":"1241245666812",
+      "Name":"Keystone",
+      "ZoomLevel":4
+   },
+   {
+      "CMSID":"1241245664423",
+      "Name":"Lake Shore Limited",
+      "ZoomLevel":5
+   },
+   {
+      "CMSID":"1241245666862",
+      "Name":"Maple Leaf",
+      "OffsetY":"2",
+      "ZoomLevel":6
+   },
+   {
+      "CMSID":"1241245664519",
+      "Name":"Michigan Services",
+      "ZoomLevel":7
+   },
+   {
+      "CMSID":"1241245664594",
+      "Name":"Missouri River Runner",
+      "ZoomLevel":7
+   },
+   {
+      "CMSID":"1241245668597",
+      "Name":"Northeast Regional",
+      "ZoomLevel":6
+   },
+   {
+      "CMSID":"1241245649505",
+      "Name":"Pacific Surfliner",
+      "OffsetY":"1",
+      "ZoomLevel":7
+   },
+   {
+      "CMSID":"1241245666958",
+      "Name":"Pennsylvanian",
+      "ZoomLevel":7
+   },
+   {
+      "CMSID":"1241245650084",
+      "Name":"San Joaquins",
+      "OffsetY":"1",
+      "ZoomLevel":6
+   },
+   {
+      "CMSID":"1237608339450",
+      "Name":"Silver Service / Palmetto",
+      "ZoomLevel":4
+   },
+   {
+      "CMSID":"1241245650447",
+      "Name":"Southwest Chief",
+      "ZoomLevel":4
+   },
+   {
+      "CMSID":"1241245650939",
+      "Name":"Sunset Limited",
+      "ZoomLevel":4
+   },
+   {
+      "CMSID":"1241245651642",
+      "Name":"Texas Eagle",
+      "ZoomLevel":4
+   },
+   {
+      "CMSID":"1241245667150",
+      "Name":"Vermonter",
+      "ZoomLevel":5
+   }
+]
