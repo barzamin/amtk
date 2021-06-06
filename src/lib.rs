@@ -1,12 +1,29 @@
 use aes::Aes128;
 use block_modes::block_padding::Pkcs7;
-use block_modes::{BlockMode, Cbc};
+use block_modes::{BlockMode, BlockModeError, Cbc};
 use pbkdf2::pbkdf2;
 use hmac::Hmac;
 use sha1::Sha1;
 use std::str;
+use std::string::FromUtf8Error;
+use thiserror::Error;
 
 type Aes128CbcPadded = Cbc<Aes128, Pkcs7>;
+
+#[derive(Debug, Error)]
+pub enum DecryptionError {
+    #[error("block mode decryption failure")]
+    BlockModeError(#[from] BlockModeError),
+
+    #[error("can't decode base64 representation of ciphertext")]
+    InvalidBase64(#[from] base64::DecodeError),
+
+    #[error("plaintext isn't real UTF8")]
+    NotUtf8(#[from] FromUtf8Error),
+
+    #[error("postfix missing pipe delimiter once decrypted")]
+    PostfixMissingDelim,
+}
 
 const AES_IV: &[u8] = &[
     0xc6, 0xeb, 0x2f, 0x7f, 0x5c, 0x47, 0x40, 0xc1, 0xa2, 0xf7, 0x8, 0xfe, 0xfd, 0x94, 0x7d, 0x39,
@@ -22,28 +39,26 @@ fn kdf(pw: &[u8]) -> Vec<u8> {
     return deriv_key;
 }
 
-// TODO: remove expects
-fn decrypt_internal(ciphertext: &[u8], pw: &[u8]) -> Vec<u8> {
+fn decrypt_internal(ciphertext: &[u8], pw: &[u8]) -> Result<Vec<u8>, DecryptionError> {
     let dk = kdf(pw);
 
+    // justification: okay to expect() since IV is a constant
     let cipher = Aes128CbcPadded::new_from_slices(&dk, AES_IV).expect("invalid IV length");
-    cipher.decrypt_vec(ciphertext).expect("block mode error")
+    Ok(cipher.decrypt_vec(ciphertext)?)
 }
 
-// TODO: remove unwraps
-pub fn decrypt(data: &str) -> String {
+pub fn decrypt(data: &str) -> Result<String, DecryptionError> {
     let (ciphertext, encrypted_pw) = data.split_at(data.len() - 88);
     let pw_plaintext =
-        String::from_utf8(decrypt_internal(&base64::decode(encrypted_pw).unwrap(), PK)).unwrap();
-    let pw = pw_plaintext.split("|").next().unwrap();
+        String::from_utf8(decrypt_internal(&base64::decode(encrypted_pw)?, PK)?)?;
+    let pw = pw_plaintext.split("|").next().ok_or(DecryptionError::PostfixMissingDelim)?;
 
     let plaintext = String::from_utf8(decrypt_internal(
-        &base64::decode(ciphertext).unwrap(),
+        &base64::decode(ciphertext)?,
         pw.as_bytes(),
-    ))
-    .unwrap();
+    )?)?;
 
-    plaintext
+    Ok(plaintext)
 }
 
 #[cfg(test)]
@@ -65,7 +80,7 @@ mod tests {
     fn test_internal_decrypt_phase1() {
         let ciphertext = base64::decode("CXgnq/gU8YfogvSlywDWApL5s0sE6SKd9M4Ky0zuH2F+BWkSTSXSMNFyEAIb3MpKwOgIZX3uGuNIUzUpevqlWQ==").unwrap();
         assert_eq!(
-            str::from_utf8(&decrypt_internal(&ciphertext, PK)).unwrap(),
+            str::from_utf8(&decrypt_internal(&ciphertext, PK).unwrap()).unwrap(),
             "7bb0fd35-d2a0-4ca5-9e1d-f6f1a1a8eed7|2021-06-05T07:12:21.000Z"
         );
     }
