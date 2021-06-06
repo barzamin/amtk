@@ -1,10 +1,11 @@
 [package]
 name = "amtk"
+description = "decrypts data from the maps.amtrak.com endpoints"
 version = "0.1.0"
 authors = ["Erin Moon <erin@hecke.rs>"]
 edition = "2018"
-
-exclude = ["test_data/**/*"] # keep amtrak copyrighted stuff out of crates.io
+license = "MIT"
+repository = "https://github.com/barzamin/amtk"
 
 [dependencies]
 aes = "0.7"

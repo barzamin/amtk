@@ -2,7 +2,6 @@ use aes::Aes128;
 use block_modes::block_padding::Pkcs7;
 use block_modes::{BlockMode, Cbc};
 use pbkdf2::pbkdf2;
-// use pbkdf2::password_hash::
 use hmac::Hmac;
 use sha1::Sha1;
 use std::str;
@@ -69,12 +68,5 @@ mod tests {
             str::from_utf8(&decrypt_internal(&ciphertext, PK)).unwrap(),
             "7bb0fd35-d2a0-4ca5-9e1d-f6f1a1a8eed7|2021-06-05T07:12:21.000Z"
         );
-    }
-
-    #[test]
-    fn test_internal_decrypt_phase2() {
-        let data = include_str!("../test_data/getTrainsData");
-
-        assert!(false);
     }
 }
