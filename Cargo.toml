@@ -4,6 +4,8 @@ version = "0.1.0"
 authors = ["Erin Moon <erin@hecke.rs>"]
 edition = "2018"
 
+exclude = ["test_data/**/*"] # keep amtrak copyrighted stuff out of crates.io
+
 [dependencies]
 aes = "0.7"
 block-modes = "0.8"
